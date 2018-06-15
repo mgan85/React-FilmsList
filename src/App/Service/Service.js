@@ -1,3 +1,5 @@
+import DataFilms from './../data/data'
+
 class Service {
     getDataFromUrl(url, getdata) {
         var self = this;
@@ -18,6 +20,10 @@ class Service {
             return getdata !== undefined ? getdata.call(self.App, json) : json;
         })
     };
+
+    getStaticData() {
+        return DataFilms;
+    }
 }
 
 export default Service;

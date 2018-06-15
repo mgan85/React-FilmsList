@@ -3,14 +3,12 @@ import './App.sass';
 import Service from './Service/Service';
 import FilmList from './FilmsList/FilmsList'
 import FilmsContext from './Context';
-import DataFilms from './data/data'
 
 class App extends Component {
     constructor() {
         super();
         this.service = this.createService();
-        this.state = {films: DataFilms};
-        //this.state = {films: []}
+        this.state = {films: []}
     }
 
     createService() {
@@ -20,15 +18,21 @@ class App extends Component {
     }
 
     featchData(url) {
-        this.service.getDataFromUrl(url, (json) => {
-            if (this.state.films !== json) {
-                this.setState({films: json});
-            }
-        });
+        if(url !== undefined) {
+            this.service.getDataFromUrl(url, (json) => {
+                if (this.state.films !== json) {
+                    this.setState({films: json});
+                }
+            });
+        }
+        else {
+            this.setState({films: this.service.getStaticData()})
+        }
     }
 
     componentDidMount() {
        //this.featchData('http://time.jsontest.com');
+       this.featchData();
     }
 
     render() {
