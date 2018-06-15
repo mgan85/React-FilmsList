@@ -12,6 +12,22 @@ class FilmRecord extends Component {
         this.Plot = props.Plot
         this.Poster = props.Poster
         this.idx = props.idx
+        this.state = {detailVisible: false}
+    }
+
+    onClick() {
+        this.setState({detailVisible: !this.state.detailVisible})
+    }
+
+    renderDetail() {
+        if (this.state.detailVisible) {
+            return <FilmDetails
+                Genre={this.Genre}
+                Runtime={this.Runtime}
+                Plot={this.Plot}
+                Visible={this.state.detailVisible}
+            />
+        }
     }
 
     render() {
@@ -19,12 +35,9 @@ class FilmRecord extends Component {
             <div className="row bg-light m-2 border">
                 <img src={this.Poster} alt={this.Title} className="img-fluid pt-2 rounded col-lg-4 col-"/>
                 <div className="col-lg-8 col-">
-                    <div className="row font-weight-bold text-left p-1"><h3>{this.idx}. {this.Title} ({this.Year})</h3></div>
-                    <FilmDetails
-                        Genre={this.Genre}
-                        Runtime={this.Runtime}
-                        Plot={this.Plot}
-                    />
+                    <div className="row font-weight-bold text-left p-1 LikeLink" onClick={this.onClick.bind(this)}>
+                        <h3>{this.idx}. {this.Title} ({this.Year})</h3></div>
+                    {this.renderDetail()}
                 </div>
 
             </div>
