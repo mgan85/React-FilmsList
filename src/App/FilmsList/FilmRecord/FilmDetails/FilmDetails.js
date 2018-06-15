@@ -13,7 +13,7 @@ class FilmDetails extends Component {
         return (
             <div className="p-1">
                 <h6 className="row"><p className="col-lg-10 col">{this.Genre} </p> <p className="text-sm-left text-lg-right col-lg-2 col">{this.Runtime}</p></h6>
-                <h5 className="row">{this.Plot}</h5>
+                <h5 className="row p-2">{this.Plot}</h5>
             </div>
         );
     }

@@ -32,12 +32,12 @@ class App extends Component {
 
     componentDidMount() {
         this.featchData();
-        //this.featchData('http://www.omdbapi.com/?t=Fiddler+on+the+Roof&apikey=PlzBanMe');
+        //this.featchData('http://www.omdbapi.com/?t=Gladiator&y=2000&plot=full&apikey=PlzBanMe');
     }
 
     render() {
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <FilmsContext.Provider value={this.state.films}>
                     <FilmList/>
                 </FilmsContext.Provider>
