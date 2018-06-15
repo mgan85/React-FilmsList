@@ -1,21 +1,45 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import './App.css';
+import './App.sass';
+import Service from './Service/Service';
+import FilmList from './FilmsList/FilmsList'
+import FilmsContext from './Context';
+import DataFilms from './data/data'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    constructor() {
+        super();
+        this.service = this.createService();
+        this.state = {films: DataFilms};
+        //this.state = {films: []}
+    }
+
+    createService() {
+        var service = new Service();
+        service.App = this;
+        return service;
+    }
+
+    featchData(url) {
+        this.service.getDataFromUrl(url, (json) => {
+            if (this.state.films !== json) {
+                this.setState({films: json});
+            }
+        });
+    }
+
+    componentDidMount() {
+       //this.featchData('http://time.jsontest.com');
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <FilmsContext.Provider value={this.state.films}>
+                    <FilmList/>
+                </FilmsContext.Provider>
+            </div>
+        );
+    }
 }
 
 export default App;
