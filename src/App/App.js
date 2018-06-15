@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.sass';
 import Service from './Service/Service';
 import FilmList from './FilmsList/FilmsList'
 import FilmsContext from './Context';
+import './App.css'
 
 class App extends Component {
     constructor() {
@@ -31,13 +31,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-       //this.featchData('http://time.jsontest.com');
-       this.featchData();
+        this.featchData();
+        //this.featchData('http://www.omdbapi.com/?t=Fiddler+on+the+Roof&apikey=PlzBanMe');
     }
 
     render() {
         return (
-            <div className="App">
+            <div className="container">
                 <FilmsContext.Provider value={this.state.films}>
                     <FilmList/>
                 </FilmsContext.Provider>

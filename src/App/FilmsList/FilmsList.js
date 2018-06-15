@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import FilmRecord from "./FilmRecord/FilmRecord";
 import FilmsContext from './../Context';
+import './FilmList.css'
 
 class FilmList extends Component {
     renderOneFilmRecord(film, index) {
@@ -12,6 +13,7 @@ class FilmList extends Component {
             Genre={film.Genre}
             Plot={film.Plot}
             Poster={film.Poster}
+            idx={index+1}
         />
     }
 
@@ -26,7 +28,7 @@ class FilmList extends Component {
 
     render() {
         return (
-            <div className="FilmList">
+            <div>
                 <FilmsContext.Consumer>
                     {(context) => {
                         return this.renderAllFilmRecords(context);
