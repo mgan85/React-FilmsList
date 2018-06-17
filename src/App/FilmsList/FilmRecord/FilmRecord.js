@@ -43,7 +43,6 @@ class FilmRecord extends Component {
         var recordCss = visible ?
             this.state.recordCssClasses.replace('SmallRecord', '') :
             this.state.recordCssClasses + " SmallRecord";
-c
 
         this.setState({
             detailVisible: !this.state.detailVisible,
