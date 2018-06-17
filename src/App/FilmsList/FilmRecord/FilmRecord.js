@@ -2,6 +2,15 @@ import React, {Component} from "react";
 import FilmDetails from './FilmDetails/FilmDetails'
 import './FilmRecord.css'
 
+/* Object create component which represent
+ * one record in List component
+ * Title - film title
+ * Year - film release year
+ * Runtime - how long is film
+ * Genre - film genres
+ * Plot - description film plot
+ * idx - unique index in List
+ */
 class FilmRecord extends Component {
     constructor(props) {
         super(props);
@@ -13,13 +22,16 @@ class FilmRecord extends Component {
         this.Poster = props.Poster
         this.idx = props.idx
         this.state = {
-            detailVisible: false,
-            imgCssClasses: 'img-fluid 1 py-3 rounded col-lg-2 col-12',
-            columnCssClasses: 'col-lg-10 col-12',
-            recordCssClasses: 'row bg-light m-2 border mx-auto node SmallRecord'
+            detailVisible: false,  // flag show if detail component should be visible
+            imgCssClasses: 'img-fluid 1 py-3 rounded col-lg-2 col-12', // contains classes for img tag with poster
+            columnCssClasses: 'col-lg-10 col-12', // contain classes for  column element with informations
+            recordCssClasses: 'row bg-light m-2 border mx-auto node SmallRecord' // contains classes for record element
         }
     }
 
+    /* Function show/hide detail component when user click
+     * on film title. Also record became bigger/smaller on click
+     */
     onClick() {
         var visible = !this.state.detailVisible;
         var imgCss = visible ?
@@ -31,7 +43,7 @@ class FilmRecord extends Component {
         var recordCss = visible ?
             this.state.recordCssClasses.replace('SmallRecord', '') :
             this.state.recordCssClasses + " SmallRecord";
-
+c
 
         this.setState({
             detailVisible: !this.state.detailVisible,
@@ -41,6 +53,10 @@ class FilmRecord extends Component {
         })
     }
 
+    /* Function render detail component. Component is
+     * rendered only when flag DetailVisible is set on
+     * record.
+     */
     renderDetail() {
         if (this.state.detailVisible) {
             return <FilmDetails
@@ -51,6 +67,7 @@ class FilmRecord extends Component {
         }
     }
 
+    // Function render component
     render() {
         return (
             <div className={this.state.recordCssClasses}>

@@ -1,6 +1,12 @@
 import React, {Component} from "react";
 import './FilmDetails.css'
 
+/* Object create component which show detail
+ * information about film
+ * Runtime = props.Runtime
+ * Genre = props.Genre
+ * Plot = props.Plot
+ */
 class FilmDetails extends Component {
     constructor(props) {
         super(props);
@@ -9,6 +15,7 @@ class FilmDetails extends Component {
         this.Plot = props.Plot
     }
 
+    // Function render element
     render() {
         return (
             <div className="p-1">

@@ -11,12 +11,19 @@ class App extends Component {
         this.state = {films: []}
     }
 
+    /* Function create service which allow
+     * get data from url or json file
+     */
     createService() {
         var service = new Service();
         service.App = this;
         return service;
     }
 
+    /* Function get data from servise and
+     * when promise is fulfilled save this
+     * data in state
+     */
     featchData(url) {
         if(url !== undefined) {
             this.service.getDataFromUrl(url, (json) => {
@@ -30,11 +37,16 @@ class App extends Component {
         }
     }
 
+    /* Function which is invoked immediately
+     * after a component is mounted. This
+     * function start fetch data.
+     */
     componentDidMount() {
         this.featchData();
         //this.featchData('http://www.omdbapi.com/?t=Gladiator&y=2000&plot=full&apikey=PlzBanMe');
     }
 
+    //Function render App
     render() {
         return (
             <div className="container-fluid">
